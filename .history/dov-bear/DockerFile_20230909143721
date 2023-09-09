@@ -18,7 +18,8 @@ RUN npm ci
 
 # ------------- Running the application -------------- #
 # Setting up the environment variables
-ENV PORT=3000 METRICS_PORT=3100 INSTANCE_NAME="This is J.Loh's app"
+ENV PORT = 3000 METRICS_PORT = 3100
+ENV INSTANCE_NAME = "This is J.Loh's app"
 
 EXPOSE ${PORT}
 EXPOSE ${METRICS_PORT}
