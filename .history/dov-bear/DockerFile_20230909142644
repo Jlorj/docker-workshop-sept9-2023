@@ -1,0 +1,27 @@
+# -------------------------- #
+FROM node:20 
+
+# mkdir /app
+# cd /app
+WORKDIR /app
+
+# copy files from notebook into the image
+COPY main.js .
+COPY metrics.js .
+COPY package.json .
+COPY package-lock.json .  
+COPY public public
+COPY views views
+
+# install dependencies
+RUN npm ci 
+
+# ------------- Running the application -------------- #
+# Setting up the environment variables
+ENV PORT = 3000 METRICS_PORT = 3100
+ENV INSTANCE_NAME = "This is J.Loh's app"
+
+EXPOSE ${PORT}
+EXPOSE ${METRICS_PORT}
+
+ENTRYPOINT node main.js
